@@ -1,3 +1,5 @@
+#include <exception>
+#include <stdexcept>
 #include "Vector.h"
 
 template<typename T>
@@ -43,6 +45,26 @@ inline Vector<T>::Vector(T array[], int size)
 {
 	for (int i = 0; i < this->size; i++)
 		this->items[i] = array[i];
+}
+
+template<typename T>
+T& Vector<T>::operator[](int index)
+{
+	return items[index];
+}
+
+template<typename T>
+T& Vector<T>::At(int index)
+{
+	if (index < 0 || index > this->size)
+		throw new std::out_of_range("invalid index of vector");
+	return items[index];
+}
+
+template<typename T>
+int Vector<T>::Size()
+{
+	return this->size;
 }
 
 template<typename T>

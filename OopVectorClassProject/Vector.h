@@ -14,6 +14,11 @@ public:
 
 	Vector(T array[], int size);
 
+	T& operator[](int index);
+	T& At(int index);
+
+	int Size();
+
 	~Vector();
 };
 
